@@ -24,7 +24,7 @@ const checkIndex = () => {
     }
 
     currentNumber.innerHTML = activeIndex + 1;
-    return activeIndex;
+    // return activeIndex;
 }
 
 const changeSlide = (direction) => {
