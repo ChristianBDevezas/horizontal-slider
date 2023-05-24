@@ -15,29 +15,27 @@ leftButton.addEventListener('click', () => changeSlide('left'));
 currentNumber.innerHTML = activeIndex + 1;
 totalNumber.innerHTML = slidesLength;
 
-const checkIndex = () => {
-    if(activeIndex > slidesLength - 1) {
-        activeIndex = 0;
-    }
-    if(activeIndex < 0) {
-        activeIndex = slidesLength - 1;
-    }
-
-    currentNumber.innerHTML = activeIndex + 1;
-    return activeIndex;
-}
-
 const changeSlide = (direction) => {
     const sliderWidth = sliderContainer.clientWidth;
     console.log(sliderWidth, screenWidth);
 
     if(direction === 'right') {
         activeIndex++;
-        checkIndex();
+        currentNumber.innerHTML = activeIndex + 1;
+        
+        if(activeIndex > slidesLength - 1) {
+            activeIndex = 0;
+            currentNumber.innerHTML = activeIndex + 1;
+        }
     }
     else if(direction === 'left') {
         activeIndex--;
-        checkIndex();
+        currentNumber.innerHTML = activeIndex + 1;
+
+        if(activeIndex < 0) {
+            activeIndex = slidesLength - 1;
+            currentNumber.innerHTML = activeIndex + 1;
+        }
     }
 
     slideTop.style.transform = `translateX(${activeIndex * sliderWidth}px)`;
